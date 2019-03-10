@@ -8,7 +8,7 @@ pip3 install --user ArconaiAudio
 ```
 
 ## Dependencies
-You need to install `mpv` as well
+You need to install [mpv](https://mpv.io/installation/) as well
 
 ## Usage
 In your terminal, run
