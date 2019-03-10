@@ -1,4 +1,4 @@
-from arconai.play import play
+from ArconaiAudio.play import play
 
 def main():
     url = "http://arconaitv.us"

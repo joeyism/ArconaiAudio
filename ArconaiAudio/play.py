@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys
-import arconai.prompt as p
-import arconai.extract as extract
+import ArconaiAudio.prompt as p
+import ArconaiAudio.extract as extract
 
 mpv_exists=True
 try:

@@ -9,7 +9,7 @@ Installation
 
 .. code-block:: bash
 
-       pip3 install --user ArconaiAudio
+   pip3 install --user ArconaiAudio
 
 Dependencies
 ------------

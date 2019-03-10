@@ -3,9 +3,9 @@ import os
 
 import jsbeautifier
 
-from arconai.driver import driver, is_alive
-from arconai.prompt import get_shows, prompt_for_shows
-from arconai import cache 
+from ArconaiAudio.driver import driver, is_alive
+from ArconaiAudio.prompt import get_shows, prompt_for_shows
+from ArconaiAudio import cache 
 
 def get_js(url):
     driver.get(url)

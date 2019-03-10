@@ -4,7 +4,7 @@ Allows you to listen to Arconai through your terminal
 ## Installation
 
 ```bash
-    pip3 install --user ArconaiAudio
+pip3 install --user ArconaiAudio
 ```
 
 ## Dependencies

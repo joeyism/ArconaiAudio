@@ -5,7 +5,7 @@ import socket
 from selenium.webdriver.remote.command import Command
 from selenium import webdriver
 
-from arconai import cache
+from ArconaiAudio import cache
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")

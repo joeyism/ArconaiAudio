@@ -4,7 +4,7 @@ import os
 from PyInquirer import style_from_dict, Token, prompt, Separator
 from tqdm import tqdm
 
-from arconai.driver import driver
+from ArconaiAudio.driver import driver
 
 style = style_from_dict({
     Token.Separator: '#cc5454',
