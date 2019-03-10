@@ -1,3 +1,5 @@
 ArconaiAudio/chromedriver
 ArconaiAudio/.cache
 ArconaiAudio.egg-info
+build
+dist

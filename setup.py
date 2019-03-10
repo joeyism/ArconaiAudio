@@ -8,7 +8,7 @@ here = path.abspath(path.dirname(__file__))
 
 version = re.search(
     '^__version__\s*=\s*"(.*)"',
-    open('arconai/__init__.py').read(),
+    open('ArconaiAudio/__init__.py').read(),
     re.M
     ).group(1)
 
@@ -23,7 +23,7 @@ setup(
         description = 'Downloads and unzips chromedriver to curent directory',
         long_description=long_description,
         entry_points = {
-            "console_scripts": ['ArconaiAudio = arconai.cli:main']
+            "console_scripts": ['ArconaiAudio = ArconaiAudio.cli:main']
         },
         author = 'joeyism',
         author_email = 'joeyism101@gmail.com',
