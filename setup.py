@@ -31,5 +31,5 @@ setup(
         download_url = 'https://github.com/joeyism/ArconaiAudio' + version + '.tar.gz',
         keywords = [], 
         classifiers = [],
-        install_requires=['selenium', 'jsbeautifier', 'python-mpv', 'PyInquirer', 'prompt_toolkit', 'tqdm', 'autochromedriver'],
+        install_requires=[dependency.split("\n")[0] for dependency in open("requirements.txt", "r").readlines()]
         )
