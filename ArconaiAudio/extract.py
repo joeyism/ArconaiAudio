@@ -21,14 +21,22 @@ def extract_m3u8(url):
     url = text.split(";")[-3].split("'")[1][:-1]
     return url
 
-def run(url, show_type="shows", force=False):
+def run(url, show_type="shows", force=False, prompt=False, show_name=None):
     if force or cache.should_get_data(show_type):
         show_url_map = get_shows(url, show_type)
         cache.data[show_type] = show_url_map
         cache.set_cache_time()
     else:
         show_url_map = cache.data[show_type]
-    show_url = prompt_for_shows(show_url_map)
+
+    if show_name is None:
+        show_url = prompt_for_shows(show_url_map, prompt=prompt)
+    else:
+        show_url = show_url_map.get[show_name]
+
+    if show_url is None:
+        raise Exception("Could not find {}".format(show_name))
+
     return extract_m3u8(show_url)
 
 

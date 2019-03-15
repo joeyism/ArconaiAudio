@@ -1,20 +1,25 @@
 #!/usr/bin/python3
 import os
 
-from PyInquirer import style_from_dict, Token, prompt, Separator
+import inquirer
 from tqdm import tqdm
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
 
 from ArconaiAudio.driver import driver
 
-style = style_from_dict({
-    Token.Separator: '#cc5454',
-    Token.QuestionMark: '#673ab7 bold',
-    Token.Selected: '#cc5454',  # default
-    Token.Pointer: '#673ab7 bold',
-    Token.Instruction: '',  # default
-    Token.Answer: '#f44336 bold',
-    Token.Question: '',
-})
+def get_show_type():
+    show_types = ["shows", "cable", "movies"]
+    questions = [
+      inquirer.List("show_type",
+                    message="Pick a show type",
+                    choices=show_types,
+                ),
+    ]
+    answers = inquirer.prompt(questions)
+    show_type = answers["show_type"]
+    return show_type
+
 
 def get_shows(url, show_type="shows", verbose=True):
     driver.get(url)
@@ -35,21 +40,31 @@ def get_shows(url, show_type="shows", verbose=True):
     return dict(show_url_map)
 
 
+def prompt_for_shows(show_url_map, prompt=False):
+    if prompt:
+        return prompt_for_shows_input(show_url_map)
+    else:
+        return prompt_for_shows_select(show_url_map)
 
-def prompt_for_shows(show_url_map):
+def prompt_for_shows_select(show_url_map):
     questions = [
-            {
-                "type": "checkbox",
-                "qmark": "?",
-                "name": "show_name",
-                "message": "Pick a show:",
-                "choices": [ {"name": show_name} for show_name in show_url_map.keys()]
-            }
-        ]
-    answers = prompt(questions, style=style)
-    selected_show_name = answers["show_name"][0]
+      inquirer.List("show_name",
+                    message="Pick a show:",
+                    choices=show_url_map.keys()
+                ),
+    ]
+    answers = inquirer.prompt(questions)
+    selected_show_name = answers["show_name"]
     url = show_url_map[selected_show_name]
     return url
+
+
+def prompt_for_shows_input(show_url_map):
+    print("Shows\n")
+    print("\t".join(show_url_map.keys()))
+    show_completer = WordCompleter(show_url_map.keys())                                                                              
+    selected_show_name = prompt("Pick a show: ", completer=show_completer)
+    return show_url_map[selected_show_name]
 
 
 if __name__ == "__main__":
