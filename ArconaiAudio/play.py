@@ -10,11 +10,11 @@ except:
     mpv_exists=False
 
 
-def play(url, prompt=False, show_type=None, show_name=None):
+def play(url, search=False, show_type=None, show_name=None):
     if show_type is None:
         show_type = prompt.get_show_type()
 
-    m3u8_url = extract.run(url, show_type=show_type, show_name=show_name)
+    m3u8_url = extract.run(url, show_type=show_type, show_name=show_name, search=search)
     if mpv_exists:
         while True:
             player = mpv.MPV(video=False, input_default_bindings=True, input_vo_keyboard=True)

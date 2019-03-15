@@ -5,7 +5,7 @@ import jsbeautifier
 
 from ArconaiAudio.driver import driver, is_alive
 from ArconaiAudio.prompt import get_shows, prompt_for_shows
-from ArconaiAudio import cache 
+from ArconaiAudio import cache
 
 def get_js(url):
     driver.get(url)
@@ -21,7 +21,7 @@ def extract_m3u8(url):
     url = text.split(";")[-3].split("'")[1][:-1]
     return url
 
-def run(url, show_type="shows", force=False, prompt=False, show_name=None):
+def run(url, show_type="shows", force=False, search=False, show_name=None):
     if force or cache.should_get_data(show_type):
         show_url_map = get_shows(url, show_type)
         cache.data[show_type] = show_url_map
@@ -30,7 +30,7 @@ def run(url, show_type="shows", force=False, prompt=False, show_name=None):
         show_url_map = cache.data[show_type]
 
     if show_name is None:
-        show_url = prompt_for_shows(show_url_map, prompt=prompt)
+        show_url = prompt_for_shows(show_url_map, search=search)
     else:
         show_url = show_url_map.get[show_name]
 

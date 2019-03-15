@@ -40,8 +40,8 @@ def get_shows(url, show_type="shows", verbose=True):
     return dict(show_url_map)
 
 
-def prompt_for_shows(show_url_map, prompt=False):
-    if prompt:
+def prompt_for_shows(show_url_map, search=False):
+    if search:
         return prompt_for_shows_input(show_url_map)
     else:
         return prompt_for_shows_select(show_url_map)
@@ -58,11 +58,23 @@ def prompt_for_shows_select(show_url_map):
     url = show_url_map[selected_show_name]
     return url
 
+def divide(a, n):
+    k, m = divmod(len(a), n)
+    return (a[i * k + min(i, m):(i + 1) * k + min(i + 1, m)] for i in range(n))
+
+def _print_shows(shows, no_of_columns=4):
+    l = list(shows)
+    while len(l) % no_of_columns != 0:
+        l.append(" ")
+
+    split = int(len(l)/no_of_columns)
+    l_split = list(divide(l, split))
+    for row in l_split:
+        print(("{:<30s}" * no_of_columns).format(*row))
 
 def prompt_for_shows_input(show_url_map):
-    print("Shows\n")
-    print("\t".join(show_url_map.keys()))
-    show_completer = WordCompleter(show_url_map.keys())                                                                              
+    _print_shows(show_url_map.keys())
+    show_completer = WordCompleter(show_url_map.keys())
     selected_show_name = prompt("Pick a show: ", completer=show_completer)
     return show_url_map[selected_show_name]
 

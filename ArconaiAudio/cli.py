@@ -1,25 +1,25 @@
 from ArconaiAudio.play import play
 
-def main(prompt=False, show_type=None, show_name=None):
+def main(search=False, show_type=None, show_name=None):
     url = "http://arconaitv.us"
-    play(url, prompt=prompt, show_type=show_type, show_name=show_name)
+    play(url, search=search, show_type=show_type, show_name=show_name)
 
 
 if __name__ == "__main__":
     import sys
-    prompt = False
+    search = True
     show_type = None
     show_name = None
 
     if len(sys.argv) > 1:
-        prompt = "--prompt" in [val.lower() for val in sys.argv]
+        search = "--search" in [val.lower() for val in sys.argv]
 
-        if sys.argv[1].lower() == "prompt":
-            prompt = True
+        if sys.argv[1].lower() == "search":
+            search = True
         else:
             show_type = sys.argv[1]
 
         if len(sys.argv) > 2:
             show_name = sys.argv[2]
 
-    main(prompt=prompt, show_type=show_type, show_name=show_name)
+    main(search=search, show_type=show_type, show_name=show_name)
