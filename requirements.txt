@@ -4,4 +4,5 @@ python-mpv
 tqdm
 autochromedriver
 requests
-inquirer
+inquirer==2.5.1
+prompt-toolkit==2.0.9
