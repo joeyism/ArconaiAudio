@@ -7,19 +7,22 @@ def main(search=False, show_type=None, show_name=None):
 
 if __name__ == "__main__":
     import sys
-    search = True
+    search = True #TODO: when inquirer==2.5.2, set this to False
     show_type = None
     show_name = None
+    input_args = sys.argv.copy()
 
-    if len(sys.argv) > 1:
-        search = "--search" in [val.lower() for val in sys.argv]
+    if len(input_args) > 1:
+        for i, val in enumerate(input_args):
+            if "--search" in val.lower():
+                search = True
+                input_args.pop(i)
+                break
 
-        if sys.argv[1].lower() == "search":
-            search = True
-        else:
-            show_type = sys.argv[1]
+    if len(input_args) > 1:
+        show_type = input_args[1]
 
-        if len(sys.argv) > 2:
-            show_name = sys.argv[2]
+        if len(input_args) > 2:
+            show_name = input_args[2]
 
     main(search=search, show_type=show_type, show_name=show_name)

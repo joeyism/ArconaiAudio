@@ -32,7 +32,7 @@ def run(url, show_type="shows", force=False, search=False, show_name=None):
     if show_name is None:
         show_url = prompt_for_shows(show_url_map, search=search)
     else:
-        show_url = show_url_map.get[show_name]
+        show_url = show_url_map.get(show_name)
 
     if show_url is None:
         raise Exception("Could not find {}".format(show_name))
