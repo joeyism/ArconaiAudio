@@ -23,7 +23,7 @@ setup(
         description = 'Downloads and unzips chromedriver to curent directory',
         long_description=long_description,
         entry_points = {
-            "console_scripts": ['ArconaiAudio = ArconaiAudio.cli:main']
+            "console_scripts": ['ArconaiAudio = ArconaiAudio.cli:cli']
         },
         author = 'joeyism',
         author_email = 'joeyism101@gmail.com',

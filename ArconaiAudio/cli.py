@@ -4,8 +4,7 @@ def main(search=False, show_type=None, show_name=None):
     url = "http://arconaitv.us"
     play(url, search=search, show_type=show_type, show_name=show_name)
 
-
-if __name__ == "__main__":
+def cli():
     import sys
     search = True #TODO: when inquirer==2.5.2, set this to False
     show_type = None
@@ -26,3 +25,6 @@ if __name__ == "__main__":
             show_name = input_args[2]
 
     main(search=search, show_type=show_type, show_name=show_name)
+
+if __name__ == "__main__":
+    cli()
