@@ -29,9 +29,11 @@ ArconaiAudio
 ```
 
 and you will see a selection
+
 ![selecting show type](docs/images/Screenshot_2019-03-16_18-04-54.png)
 
-After selection a show type, the relevant show names will be displayed. In the input menu, you can type in the show you want to listen to.
+After selection a show type, the relevant show names will be displayed. In the input menu, you can type in the show you want to listen to. Word completion is automatically enabled, so pressing `TAB` will help selection. Selection through `UP` or `DOWN` arrow keys also works.
+
 ![selecting show name](docs/images/Screenshot_2019-03-16_18-04-04.png)
 
 **NOTE**: Show names are case sensitive
